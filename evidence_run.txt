@@ -1,0 +1,24 @@
+CS6530-A2-v1 evidence run
+M1 Alice->Bob sid=fdd251668e488b2ab767f043f9084cfe epk_fp=053d0b3573c0da74
+M1 Alice->Bob sid=fdd251668e488b2ab767f043f9084cfe epk_fp=053d0b3573c0da74
+M2 Bob->Alice sid=0601dccd8443460d19dd2e62e879cdad epk_fp=f5401382296bec04
+M2 Bob->Alice sid=0601dccd8443460d19dd2e62e879cdad epk_fp=f5401382296bec04
+M3 Alice->Bob transcript_hash=9d848113e8fafa93ddbedb6fe7a9cf1b33c4367e3200ec7c0974b2c377cda460 signature=sent
+M3 Alice->Bob transcript_hash=9d848113e8fafa93ddbedb6fe7a9cf1b33c4367e3200ec7c0974b2c377cda460 signature=verified
+M4 Bob->Alice signature=verified; AUTHENTICATED
+M4 Bob->Alice signature=sent; AUTHENTICATED
+TR-1 Alice->Bob counter=0 result=SUCCESS plaintext=alice-message-0
+TR-1 Bob->Alice counter=0 result=SUCCESS plaintext=bob-message-0
+TR-1 Alice->Bob counter=1 result=SUCCESS plaintext=alice-message-1
+TR-1 Bob->Alice counter=1 result=SUCCESS plaintext=bob-message-1
+TR-1 Alice->Bob counter=2 result=SUCCESS plaintext=alice-message-2
+TR-1 Bob->Alice counter=2 result=SUCCESS plaintext=bob-message-2
+TR-1 raw X25519 secret is not used as AES key: SUCCESS (HKDF output is used)
+TR-2 weakened mode: Mallory substitutes ephemeral keys; separate secrets permit decrypt/modify/re-encrypt: SUCCESS
+TR-2 authenticated mode: substituted ephemeral key changes transcript; signature verification: FAILED as expected; SESSION ABORTED
+TR-3 original counter=0 result=ACCEPT
+TR-3 replay counter=0 expected=1 result=REJECTED reason=unexpected counter: expected 1, got 0
+TR-4 later Ed25519 compromise reconstructs old X25519 secret: False (expected False)
+TR-4 controlled retained ephemeral private key reconstructs old traffic key: True (expected True)
+TR-4 ephemeral private keys/shared secret/traffic keys discarded after comparison: SUCCESS
+ALL REQUIRED OFFLINE EXPERIMENTS: SUCCESS
